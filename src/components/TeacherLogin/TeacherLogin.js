@@ -4,12 +4,11 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { togglePopup } from "../../redux/StaffReducer/StaffAction";
 
-function PrincipalSignup() {
+function TeacherLogin() {
   // state
   const [formData, setFormData] = useState({
     email: "",
-    password: "",
-    name: "",
+    pass: "",
   });
 
   // dispatch
@@ -19,16 +18,14 @@ function PrincipalSignup() {
   const login = async () => {
     try {
       const { data } = await axios.post(
-        "http://localhost:3000/principal/signup",
+        "http://localhost:3000/teacher/login",
         formData
       );
       console.log(data);
       if (data?.status) {
-        dispatch(togglePopup(data?.message, "success"));
-        setFormData({
-          email: "",
-          password: "",
-          name: "",
+        dispatch({
+          type: "LOGIN",
+          payload: data?.data,
         });
       } else {
         dispatch(togglePopup(data?.message, "error"));
@@ -54,20 +51,6 @@ function PrincipalSignup() {
             label="Email"
             variant="outlined"
             fullWidth
-            value={formData.name}
-            onChange={(e) =>
-              setFormData({
-                ...formData,
-                name: e.target.value,
-              })
-            }
-          />
-        </Grid>
-        <Grid item xs={12} style={{ marginBottom: "1rem" }}>
-          <TextField
-            label="Email"
-            variant="outlined"
-            fullWidth
             value={formData.email}
             onChange={(e) =>
               setFormData({
@@ -82,18 +65,18 @@ function PrincipalSignup() {
             label="Password"
             variant="outlined"
             fullWidth
-            value={formData.password}
+            value={formData.pass}
             onChange={(e) =>
               setFormData({
                 ...formData,
-                password: e.target.value,
+                pass: e.target.value,
               })
             }
           />
         </Grid>
         <Grid item xs={12} style={{ marginBottom: "1rem" }}>
           <Button variant="contained" color="primary" fullWidth onClick={login}>
-            SIGNUP
+            LOGIN
           </Button>
         </Grid>
       </Grid>
@@ -101,4 +84,4 @@ function PrincipalSignup() {
   );
 }
 
-export default PrincipalSignup;
+export default TeacherLogin;

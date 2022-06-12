@@ -8,7 +8,7 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { togglePopup } from "../../redux/StaffReducer/StaffAction";
 import axios from "axios";

@@ -1,17 +1,8 @@
-import {
-  AppBar,
-  Box,
-  Button,
-  Grid,
-  Tab,
-  Tabs,
-  Typography,
-} from "@material-ui/core";
+import { AppBar, Grid, Tab, Tabs } from "@material-ui/core";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
 import PrincipalLogin from "../../components/PrincipalLogin/PrincipalLogin";
 import PrincipalSignup from "../../components/PrincipalSignup/PrincipalSignup";
-import { togglePopup } from "../../redux/StaffReducer/StaffAction";
+import TeacherLogin from "../../components/TeacherLogin/TeacherLogin";
 import Page from "../Page";
 
 function Login() {
@@ -19,7 +10,6 @@ function Login() {
   const [value, setValue] = useState(0);
 
   // dispatch
-  const dispatch = useDispatch();
 
   // function handlers
   const handleChange = (event, newValue) => {
@@ -47,7 +37,7 @@ function Login() {
             <PrincipalSignup />
           </TabPanel>
           <TabPanel value={value} index={2}>
-            Item Three
+            <TeacherLogin />
           </TabPanel>
         </Grid>
       </Grid>

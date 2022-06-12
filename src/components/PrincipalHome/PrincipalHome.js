@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Button, Grid, Paper, Typography } from "@material-ui/core";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
